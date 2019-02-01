@@ -19,9 +19,9 @@ namespace BowlingKataCSharp
 
             for (var frame = 0; frame < 10; frame++)
             {
-                if (_rolls[roll] + _rolls[roll + 1] == 10)
+                if (IsASpare(roll))
                 {
-                    _score += 10 + _rolls[roll + 2];
+                    _score += TenPlusFirstRollOfNextFrame(roll);
                     roll += 2;
                 }
                 else
@@ -32,6 +32,16 @@ namespace BowlingKataCSharp
             }
 
             return _score;
+        }
+
+        private int TenPlusFirstRollOfNextFrame(int roll)
+        {
+            return 10 + _rolls[roll + 2];
+        }
+
+        private bool IsASpare(int roll)
+        {
+            return _rolls[roll] + _rolls[roll + 1] == 10;
         }
     }
 }
