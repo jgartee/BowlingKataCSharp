@@ -56,5 +56,13 @@ namespace BowlingKataCSharpTests
 
             Assert.Equal(14, _game.Score());
         }
+
+        [Fact]
+        public void ScoreThreeHundredOnPerfectGame()
+        {
+            RollMany(12, 10);
+
+            Assert.Equal(300, _game.Score());
+        }
     }
 }
