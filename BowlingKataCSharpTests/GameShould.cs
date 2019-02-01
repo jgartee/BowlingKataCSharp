@@ -19,6 +19,14 @@ namespace BowlingKataCSharpTests
         }
 
         [Fact]
+        public void ScoreTwentyWhenEachRollKnocksDownOnePin()
+        {
+            RollMany(20, 1);
+
+            Assert.Equal(20, _game.Score());
+        }
+
+        [Fact]
         public void ScoreZeroWhenAllGutterBallsThrown()
         {
             RollMany(20, 0);

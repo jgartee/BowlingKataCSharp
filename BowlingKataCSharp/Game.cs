@@ -1,17 +1,17 @@
-﻿using System;
-
-namespace BowlingKataCSharp
+﻿namespace BowlingKataCSharp
 {
     public class Game
     {
-        public void Roll(int i)
-        {
+        private int _score;
 
+        public void Roll(int pins)
+        {
+            _score += pins;
         }
 
         public int Score()
         {
-            return 0;
+            return _score;
         }
     }
 }
