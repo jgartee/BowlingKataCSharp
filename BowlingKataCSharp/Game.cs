@@ -19,11 +19,8 @@ namespace BowlingKataCSharp
 
             for (var frame = 0; frame < 10; frame++)
             {
-                if (_rolls[roll] == 10)
-                {
-                    _score += 10 + _rolls[roll + 1] + _rolls[roll + 2];
-                    roll += 1;
-                }
+                if (IsAStrike(roll))
+                    _score += StrikeFrameScoring(roll++);
                 else
                 {
                     if (IsASpare(roll))
@@ -36,6 +33,16 @@ namespace BowlingKataCSharp
             }
 
             return _score;
+        }
+
+        private int StrikeFrameScoring(int roll)
+        {
+            return 10 + _rolls[roll + 1] + _rolls[roll + 2];
+        }
+
+        private bool IsAStrike(int roll)
+        {
+            return _rolls[roll] == 10;
         }
 
         private int OpenFrameScoring(int roll)
