@@ -19,12 +19,20 @@ namespace BowlingKataCSharp
 
             for (var frame = 0; frame < 10; frame++)
             {
-                if (IsASpare(roll))
-                    _score += SpareFrameScoring(roll);
+                if (_rolls[roll] == 10)
+                {
+                    _score += 10 + _rolls[roll + 1] + _rolls[roll + 2];
+                    roll += 1;
+                }
                 else
-                    _score += OpenFrameScoring(roll);
+                {
+                    if (IsASpare(roll))
+                        _score += SpareFrameScoring(roll);
+                    else
+                        _score += OpenFrameScoring(roll);
 
-                roll += 2;
+                    roll += 2;
+                }
             }
 
             return _score;
